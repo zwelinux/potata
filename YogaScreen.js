@@ -9,17 +9,10 @@ function YogaScreen({ navigation }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const apiKey = 'e4b2Ql3bncubuJiUf901gQ==sUTKSzcH7sIp9lI4'; // Your API key
-  const apiUrl = 'https://api.api-ninjas.com/v1/exercises?difficulty=expert'; // API URL
+  const apiUrl = 'https://zinny.pythonanywhere.com/api/agendas'; // API URL
 
   useEffect(() => {
-    fetch(apiUrl, {
-      method: 'GET',
-      headers: {
-        'x-api-key': apiKey,  // Include the API key in the header
-        'Content-Type': 'application/json', // Optional, depending on the API
-      },
-    })
+    fetch(apiUrl)
       .then(response => response.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -46,7 +39,7 @@ function YogaScreen({ navigation }) {
             {/* Main Header */}
             <Text style={styles.headerText}>POTATA</Text>
             {/* Secondary Header */}
-            <Text style={styles.secondaryHeaderText}>Yoga Everyday</Text>
+            <Text style={styles.secondaryHeaderText}>Full Body Workout</Text>
           </View>
 
           {/* Home Icon */}
@@ -89,7 +82,7 @@ function YogaScreen({ navigation }) {
             {/* Main Header */}
             <Text style={styles.headerText}>POTATA</Text>
             {/* Secondary Header */}
-            <Text style={styles.secondaryHeaderText}>Yoga Everyday</Text>
+            <Text style={styles.secondaryHeaderText}>Full Body Workout</Text>
           </View>
 
           {/* Home Icon */}
@@ -159,7 +152,7 @@ function YogaScreen({ navigation }) {
                   style={styles.list}
                   key={item.id || index}
                 >
-                  <Text style={styles.listtext}>{item.id}+ {item.name}</Text>
+                  <Text style={styles.listtext}>{item.id}+ {item.title}</Text>
                 </TouchableOpacity>
               ))}
             </ScrollView>
