@@ -62,13 +62,13 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 40, // Rounded bottom-right corner
   },
   headerGroup: {
-    marginTop: 80,
+    marginTop: 60,
   },
   image: {
     width: '100%',
     height: 400,
     borderRadius: 10,
-    marginTop: 55,
+    marginTop: 70,
   },
   secondryPlaceHolder: {
     flex: 1.2, // Takes 25% of the screen
