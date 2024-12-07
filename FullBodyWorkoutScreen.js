@@ -223,8 +223,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   list: {
+    width: '300',
     padding: 12,
-    // marginLeft: 10,
     marginRight: 10,
     backgroundColor: '#efefef',
     marginTop: 15,
