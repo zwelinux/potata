@@ -166,7 +166,7 @@ function DetailScreen({ route, navigation }) {
               style={styles.modalButton}
               onPress={() => {
                 setIsModalVisible(false);
-                navigation.navigate('Home'); // Navigate to HomeScreen after closing modal
+                navigation.navigate('Start Now'); // Navigate to HomeScreen after closing modal
               }}
             >
               <Text style={styles.modalButtonText}>Cheers!</Text>
