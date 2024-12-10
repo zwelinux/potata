@@ -23,7 +23,7 @@ function DetailScreen({ route, navigation }) {
     // Set background color based on the item
     setBackgroundColor(currentIndex === totalItems - 1 ? '#656565' : '#9380FF');
 
-    // Timer logic
+    // Timer logic code
     const time = currentItem?.time || 0;
     if (time > 0) {
       setIsButtonDisabled(true);
