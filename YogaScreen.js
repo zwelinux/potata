@@ -39,11 +39,11 @@ function YogaScreen({ navigation }) {
             {/* Main Header */}
             <Text style={styles.headerText}>POTATA</Text>
             {/* Secondary Header */}
-            <Text style={styles.secondaryHeaderText}>Full Body Workout</Text>
+            <Text style={styles.secondaryHeaderText}>Yoga Everyday</Text>
           </View>
 
           {/* Home Icon */}
-          <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeIcon}>
+          <TouchableOpacity onPress={() => navigation.navigate('Start Now')} style={styles.homeIcon}>
             <Ionicons name="home" size={25} color="#fff" />
           </TouchableOpacity>
         </View>
@@ -82,11 +82,11 @@ function YogaScreen({ navigation }) {
             {/* Main Header */}
             <Text style={styles.headerText}>POTATA</Text>
             {/* Secondary Header */}
-            <Text style={styles.secondaryHeaderText}>Full Body Workout</Text>
+            <Text style={styles.secondaryHeaderText}>Yoga Everyday</Text>
           </View>
 
           {/* Home Icon */}
-          <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeIcon}>
+          <TouchableOpacity onPress={() => navigation.navigate('Start Now')} style={styles.homeIcon}>
             <Ionicons name="home" size={25} color="#fff" />
           </TouchableOpacity>
         </View>
@@ -128,7 +128,7 @@ function YogaScreen({ navigation }) {
           </View>
 
           {/* Home Icon */}
-          <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeIcon}>
+          <TouchableOpacity onPress={() => navigation.navigate('Start Now')} style={styles.homeIcon}>
             <Ionicons name="home" size={25} color="#fff" />
           </TouchableOpacity>
         </View>
@@ -223,8 +223,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   list: {
+    width: '300',
     padding: 12,
-    // marginLeft: 10,
     marginRight: 10,
     backgroundColor: '#efefef',
     marginTop: 15,

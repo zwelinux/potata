@@ -43,7 +43,7 @@ function FullBodyWorkoutScreen({ navigation }) {
           </View>
 
           {/* Home Icon */}
-          <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeIcon}>
+          <TouchableOpacity onPress={() => navigation.navigate('Start Now')} style={styles.homeIcon}>
             <Ionicons name="home" size={25} color="#fff" />
           </TouchableOpacity>
         </View>
@@ -86,7 +86,7 @@ function FullBodyWorkoutScreen({ navigation }) {
           </View>
 
           {/* Home Icon */}
-          <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeIcon}>
+          <TouchableOpacity onPress={() => navigation.navigate('Start Now')} style={styles.homeIcon}>
             <Ionicons name="home" size={25} color="#fff" />
           </TouchableOpacity>
         </View>
@@ -128,7 +128,7 @@ function FullBodyWorkoutScreen({ navigation }) {
           </View>
 
           {/* Home Icon */}
-          <TouchableOpacity onPress={() => navigation.navigate('Home')} style={styles.homeIcon}>
+          <TouchableOpacity onPress={() => navigation.navigate('Start Now')} style={styles.homeIcon}>
             <Ionicons name="home" size={25} color="#fff" />
           </TouchableOpacity>
         </View>

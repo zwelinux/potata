@@ -18,38 +18,49 @@ function StartNowScreen({ navigation }) {
             <View style={styles.cardTextContainer}>
               <Text style={styles.cardHeader1}>Full Body Workout</Text>
               <Text style={styles.cardHeader2}>No Equipment Cardio</Text>
+              <Text style={styles.cardHeader3}>10 Minutes</Text>
             </View>
           </TouchableOpacity>
 
           {/* Card 2: Couch Potato */}
-          <TouchableOpacity 
-            style={[styles.card, { backgroundColor: '#656565' }]}
-            onPress={() => navigation.navigate('Couch Potato')}
-          >
-            <Image
-              source={require('./assets/couch_potato.png')} 
-              style={styles.cardImage} 
-            />
-            <View style={styles.cardTextContainer}>
-              <Text style={styles.cardHeader1}>Couch Potato</Text>
-              <Text style={styles.cardHeader2}>For People who sit a lot</Text>
-            </View>
-          </TouchableOpacity>
+<TouchableOpacity 
+  style={[styles.card, { backgroundColor: '#656565' }]}
+  onPress={() => navigation.navigate('Couch Potato')}
+>
+  <Image
+    source={require('./assets/couch_potato.png')} 
+    style={styles.cardImage} 
+  />
+  <View style={styles.cardTextContainer}>
+    <Text style={styles.cardHeader1}>Couch Potato</Text>
+    <Text style={styles.cardHeader2}>For People who sit a lot</Text>
+    <Text style={styles.cardHeader3}>10 Minutes</Text>
+  </View>
+  <View style={styles.stickyBar}>
+    <Text style={styles.stickyBarText}>New</Text>
+  </View>
+</TouchableOpacity>
 
-          {/* Card 3: Yoga Everyday */}
-          <TouchableOpacity 
-            style={[styles.card, { backgroundColor: '#656565' }]}
-            onPress={() => navigation.navigate('Yoga')}
-          >
-            <Image
-              source={require('./assets/couch_potato.png')} 
-              style={styles.cardImage} 
-            />
-            <View style={styles.cardTextContainer}>
-              <Text style={styles.cardHeader1}>Yoga Everyday</Text>
-              <Text style={styles.cardHeader2}>For Mind & Body</Text>
-            </View>
-          </TouchableOpacity>
+{/* Card 3: Yoga Everyday */}
+<TouchableOpacity 
+  style={[styles.card, { backgroundColor: '#656565' }]}
+  onPress={() => navigation.navigate('Yoga')}
+>
+  <Image
+    source={require('./assets/couch_potato.png')} 
+    style={styles.cardImage} 
+  />
+  <View style={styles.cardTextContainer}>
+    <Text style={styles.cardHeader1}>Yoga Everyday</Text>
+    <Text style={styles.cardHeader2}>For Mind & Body</Text>
+    <Text style={styles.cardHeader3}>10 Minutes</Text>
+  </View>
+  <View style={styles.stickyBar}>
+    <Text style={styles.stickyBarText}>New</Text>
+  </View>
+</TouchableOpacity>
+
+
         </View>
       </View>
 
@@ -142,6 +153,29 @@ const styles = StyleSheet.create({
     color: '#fff', // Lighter text color for description
     marginTop: 5,
   },
+  cardHeader3: {
+    fontSize: 14,
+    color: '#fff', // Lighter text color for description
+    marginTop: 5,
+  },
+  stickyBar: {
+    position: 'absolute',
+    top: 10, // Position slightly below the top edge
+    right: 10, // Align to the very right corner
+    height: 25, // Height of the sticky bar
+    width: 45, // Fixed width for the sticky bar
+    backgroundColor: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black background
+    borderRadius: 15, // Rounded corners for the sticky bar
+    justifyContent: 'center', // Centers the text vertically
+    alignItems: 'center', // Centers the text horizontally
+    paddingHorizontal: 10, // Adds horizontal padding
+  },  
+  stickyBarText: {
+    fontSize: 10,
+    color: '#fff', // White text
+    fontWeight: 'bold',
+  },
+  
 });
 
 export default StartNowScreen;

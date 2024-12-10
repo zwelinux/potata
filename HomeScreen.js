@@ -1,28 +1,38 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions, Animated } from 'react-native';
 
-function StartNowScreen({ navigation }) {
+const { width, height } = Dimensions.get('window');
+
+function HomeScreen({ navigation }) {
+  const fadeAnim = useRef(new Animated.Value(0)).current; // Initial opacity is 0
+
+  useEffect(() => {
+    // Start the animation when the component is mounted
+    Animated.timing(fadeAnim, {
+      toValue: 1, // Final opacity is 1
+      duration: 1500, // Duration of the animation in milliseconds
+      useNativeDriver: true, // Use the native driver for better performance
+    }).start();
+  }, [fadeAnim]);
+
   return (
     <View style={styles.container}>
       <View style={styles.mainPlaceHolder2}>
         <View style={styles.mainPlaceHolder}>
+          <View style={styles.headerGroup}>
+            <Text style={styles.title}>POTATA</Text>
+            <Text style={styles.description}>Simply Workout At Home</Text>
+          </View>
 
-        <View style={styles.headerGroup}>
-          <Text style={styles.title}>POTATA</Text>
-          <Text style={styles.description}>Simply Workout At Home</Text>
-        </View>
-          
-        <Image
-          source={require('./assets/couch_potato.png')} 
-          style={styles.image}
-        />
-
-
+          {/* Animated Image */}
+          <Animated.Image
+            source={require('./assets/couch_potato.png')}
+            style={[styles.image, { opacity: fadeAnim }]} // Bind opacity to fadeAnim
+          />
         </View>
       </View>
 
       <View style={styles.secondryPlaceHolder}>
-
         <View style={styles.buttonGroup}>
           <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Start Now')}>
             <Text style={styles.buttonText}>Start Now</Text>
@@ -34,7 +44,6 @@ function StartNowScreen({ navigation }) {
         </View>
 
         <Text style={styles.smallText}>v1.1.2 Stable</Text>
-
       </View>
     </View>
   );
@@ -42,8 +51,9 @@ function StartNowScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, // Takes the full screen
+    flex: 1,
     backgroundColor: '#fff',
+    width: width, // Set width dynamically based on screen size
   },
   mainPlaceHolder2: {
     width: '100%',
@@ -53,26 +63,25 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 40, // Rounded bottom-right corner
   },
   mainPlaceHolder: {
-    width: '100%',
-    height: '98%',
+    flex: 1, // This will take available space
     backgroundColor: '#9380FF',
-    // justifyContent: 'center', // Vertically centers the cards
-    // alignItems: 'center', // Horizontally centers the cards
-    borderBottomLeftRadius: 40, // Rounded bottom-left corner
-    borderBottomRightRadius: 40, // Rounded bottom-right corner
+    borderBottomLeftRadius: 40,
+    borderBottomRightRadius: 40,
   },
   headerGroup: {
     marginTop: 60,
   },
   image: {
-    width: '100%',
-    height: 400,
+    width: width * 1,
+    height: 'auto',
+    aspectRatio: 1,
+    resizeMode: 'contain',
     borderRadius: 10,
-    marginTop: 70,
+    marginTop: 50,
   },
   secondryPlaceHolder: {
-    flex: 1.2, // Takes 25% of the screen
-    // backgroundColor: '#fff',
+    flex: 0.9,
+    backgroundColor: '#fff',
     justifyContent: 'center', // Vertically centers the content
     alignItems: 'center',
     padding: 20, // Add padding to space out the text
@@ -92,7 +101,7 @@ const styles = StyleSheet.create({
   },
   buttonGroup: {
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 0,
   },
   button: {
     padding: 13,
@@ -141,4 +150,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StartNowScreen;
+export default HomeScreen;

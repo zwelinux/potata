@@ -74,7 +74,7 @@ function DetailScreen({ route, navigation }) {
           <View style={styles.header}>
             <View style={styles.headerTextGroup}>
               <Text style={styles.headerText}>POTATA</Text>
-              <Text style={styles.secondaryHeaderText}>Full Body Workout</Text>
+              <Text style={styles.secondaryHeaderText}>Simple Workout At Home</Text>
             </View>
           </View>
 
@@ -92,7 +92,10 @@ function DetailScreen({ route, navigation }) {
             <View style={styles.infoPlaceHolder}>
               <View style={styles.infoPlaceHolderTextGroup}>
                 <Text style={styles.bodyText}>{formatTitle(currentItem?.title, currentItem?.name)}</Text>
-                <Text style={styles.secondaryBodyText}>
+                <Text style={[
+                  styles.secondaryBodyText,
+                  { backgroundColor: remainingTime > 0 ? 'rgba(0, 0, 0, 0.4)' : '#4CAF50' }, // Change to your desired color
+                ]} >
                   {currentItem.time ? (
                     remainingTime > 0 ? (
                       `${remainingTime} / ${currentItem.time}s`
