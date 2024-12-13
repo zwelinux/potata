@@ -45,7 +45,7 @@ function StartNowScreen({ navigation }) {
   const handleNotificationClick = async () => {
     setNotificationClicked(true); // Mark the notification as clicked
     await AsyncStorage.setItem('notificationClicked', 'true'); // Store state in AsyncStorage
-    alert('Notifications Clicked!'); // Add your notification functionality here
+    alert('You are the only one who can shape yourself! Just Believe You Can'); // Add your notification functionality here
   };
 
   return (

@@ -74,7 +74,7 @@ function DetailScreen({ route, navigation }) {
           <View style={styles.header}>
             <View style={styles.headerTextGroup}>
               <Text style={styles.headerText}>POTATA</Text>
-              <Text style={styles.secondaryHeaderText}>Simple Workout At Home</Text>
+              <Text style={styles.secondaryHeaderText}>Simply Workout At Home</Text>
             </View>
           </View>
 
