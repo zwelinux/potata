@@ -51,6 +51,8 @@ function DetailScreen({ route, navigation }) {
     const nextIndex = currentIndex + 1;
     if (nextIndex < items.length) {
       setCurrentIndex(nextIndex);
+    }else {
+      navigation.replace('Start Now');
     }
   };
 
