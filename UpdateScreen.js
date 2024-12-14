@@ -1,18 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, BackHandler } from 'react-native';
 
-const UpdateScreen = () => {
-
-    useEffect(() => {
-      const backAction = () => {
-        navigation.navigate('App Info'); // Navigate to HomeScreen
-        return true; // Prevent default back button behavior
-      };
-      
-      const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
-      
-      return () => backHandler.remove(); // Cleanup on unmount
-    }, [navigation]);
+const UpdateScreen = ({ navigation }) => {
 
   // Simulating app version and update status
   const currentVersion = "1.0.0";
@@ -29,6 +18,17 @@ const UpdateScreen = () => {
     Linking.openURL(playStoreLink)
       .catch(err => console.error("Failed to open URL: ", err));
   };
+
+  useEffect(() => {
+    const backAction = () => {
+      navigation.navigate('App Info'); // Navigate to HomeScreen
+      return true; // Prevent default back button behavior
+    };
+    
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
+    
+    return () => backHandler.remove(); // Cleanup on unmount
+  }, [navigation]);
 
   return (
     <ScrollView style={styles.container}>

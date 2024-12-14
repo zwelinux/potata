@@ -42,16 +42,15 @@ export default function App() {
           name="Start Now"
           component={StartNowScreen}
           options={{ 
-            headerShown: false,
-            gestureEnabled: false, // Disable swipe back gesture
+            headerShown: false
           }}
-          listeners={({ navigation }) => ({
-            beforeRemove: (e) => {
-              // Navigate to Home instead of removing this screen
-              e.preventDefault();
-              navigation.navigate('Home');
-            },
-          })}
+          // listeners={({ navigation }) => ({
+          //   beforeRemove: (e) => {
+          //     // Navigate to Home instead of removing this screen
+          //     e.preventDefault();
+          //     navigation.navigate('Home');
+          //   },
+          // })}
         />
         
         <Stack.Screen
@@ -76,13 +75,13 @@ export default function App() {
           name="App Info"
           component={AppInfoScreen}
           options={{ headerShown: true }}
-          listeners={({ navigation }) => ({
-            beforeRemove: (e) => {
-              // Navigate to Home instead of removing this screen
-              e.preventDefault();
-              navigation.navigate('Home');
-            },
-          })}
+          // listeners={({ navigation }) => ({
+          //   beforeRemove: (e) => {
+          //     // Navigate to Home instead of removing this screen
+          //     e.preventDefault();
+          //     navigation.navigate('Home');
+          //   },
+          // })}
         />
         
         <Stack.Screen
