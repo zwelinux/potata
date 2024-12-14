@@ -1,12 +1,11 @@
-// import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, StatusBar, Platform, BackHandler } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HomeScreen from './HomeScreen'; 
 import StartNowScreen from './StartNowScreen';
-import AppInfoScreen from './AppInfoScreen'; // New AppInfoScreen import
+import AppInfoScreen from './AppInfoScreen';
 import FullBodyWorkoutScreen from './FullBodyWorkoutScreen';
 import CouchPotatoScreen from './CouchPotatoScreen';
 import YogaScreen from './YogaScreen';
@@ -14,8 +13,6 @@ import DetailScreen from './DetailScreen';
 import PrivacyPolicyScreen from './PrivacyPolicyScreen';
 import TermsAndConditionsScreen from './TermsAndConditionsScreen';
 import UpdateScreen from './UpdateScreen';
-import { StatusBar, Platform } from 'react-native';
-
 
 const Stack = createNativeStackNavigator();
 
@@ -44,7 +41,17 @@ export default function App() {
         <Stack.Screen
           name="Start Now"
           component={StartNowScreen}
-          options={{ headerShown: false }}
+          options={{ 
+            headerShown: false,
+            gestureEnabled: false, // Disable swipe back gesture
+          }}
+          listeners={({ navigation }) => ({
+            beforeRemove: (e) => {
+              // Navigate to Home instead of removing this screen
+              e.preventDefault();
+              navigation.navigate('Home');
+            },
+          })}
         />
         
         <Stack.Screen
@@ -67,8 +74,15 @@ export default function App() {
         
         <Stack.Screen
           name="App Info"
-          component={AppInfoScreen} // AppInfoScreen as the main screen for App Info
-          options={{ headerShown: true }} // No header for App Info screen
+          component={AppInfoScreen}
+          options={{ headerShown: true }}
+          listeners={({ navigation }) => ({
+            beforeRemove: (e) => {
+              // Navigate to Home instead of removing this screen
+              e.preventDefault();
+              navigation.navigate('Home');
+            },
+          })}
         />
         
         <Stack.Screen

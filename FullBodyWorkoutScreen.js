@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, ActivityIndicator, StyleSheet, BackHandler } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; // Importing Ionicons for the icon
 
 
@@ -26,7 +26,16 @@ function FullBodyWorkoutScreen({ navigation }) {
         setError(err);
         setLoading(false);
       });
-  }, []);
+
+      const backAction = () => {
+        navigation.navigate('Start Now'); // Navigate to HomeScreen
+        return true; // Prevent default back button behavior
+      };
+          
+      const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
+          
+      return () => backHandler.remove(); // Cleanup on unmount
+  }, [navigation]);
 
 
   if (loading) {

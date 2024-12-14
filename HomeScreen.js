@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions, Animated } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions, Animated, BackHandler, Alert } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
@@ -14,6 +14,27 @@ function HomeScreen({ navigation }) {
       useNativeDriver: true, // Use the native driver for better performance
     }).start();
   }, [fadeAnim]);
+
+  useEffect(() => {
+    const backAction = () => {
+      Alert.alert("Exit App", "Are you sure you want to exit the app?", [
+        {
+          text: "Cancel",
+          onPress: () => null,
+          style: "cancel",
+        },
+        { text: "Yes", onPress: () => BackHandler.exitApp() },
+      ]);
+      return true; // Prevent default behavior
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove(); // Cleanup on component unmount
+  }, []);
 
   return (
     <View style={styles.container}>

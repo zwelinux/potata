@@ -1,7 +1,20 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import React, { useEffect } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, BackHandler } from 'react-native';
 
 export default function AppInfoScreen({ navigation }) {
+
+  useEffect(() => {
+    const backAction = () => {
+      navigation.navigate('Home'); // Navigate to HomeScreen
+      return true; // Prevent default back button behavior
+    };
+
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
+
+    return () => backHandler.remove(); // Cleanup on unmount
+  }, [navigation]);
+
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>App Info</Text>

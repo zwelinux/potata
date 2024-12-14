@@ -1,7 +1,19 @@
-import React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, ScrollView, StyleSheet, BackHandler } from 'react-native';
 
-const TermsAndConditionsScreen = () => {
+const TermsAndConditionsScreen = ({ navigation }) => {
+
+  useEffect(() => {
+    const backAction = () => {
+      navigation.navigate('App Info'); // Navigate to HomeScreen
+      return true; // Prevent default back button behavior
+    };
+    
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
+    
+    return () => backHandler.remove(); // Cleanup on unmount
+  }, [navigation]);
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.content}>
