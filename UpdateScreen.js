@@ -38,7 +38,7 @@ const UpdateScreen = ({ navigation }) => {
         {isUpdateAvailable ? (
           <>
             <Text style={styles.paragraph}>
-              Current Software Version :  <Text style={styles.highlight}>{newVersion} stable</Text>
+              Current Version :  <Text style={styles.highlight}>{newVersion} stable</Text>
             </Text>
             <Text style={styles.instructions}>
               To update, visit the Application store and download the latest version.
