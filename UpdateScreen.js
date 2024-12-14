@@ -1,32 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, BackHandler } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, BackHandler, Platform } from 'react-native';
 
 const UpdateScreen = ({ navigation }) => {
 
   // Simulating app version and update status
   const currentVersion = "1.0.0";
-  const [isUpdateAvailable, setIsUpdateAvailable] = useState(true); // For testing, we can simulate an update
+  const [isUpdateAvailable, setIsUpdateAvailable] = useState(true); // For testing, simulate an update
   const [newVersion, setNewVersion] = useState("1.1.2"); // Update this value when a new version is available
 
-  // Google Play Store URL for your app (Replace with your actual app's URL)
-  // const playStoreLink = "https://play.google.com/store/apps/details?id=com.yourappname";
-
-    const playStoreLink = "https://play.google.com/store/apps";
-  
+  // URLs for app store (replace with your actual app's URL)
+  const playStoreLink = "https://play.google.com"; // Google Play Store URL
+  const appStoreLink = "https://apps.apple.com"; // App Store URL for iOS (replace YOUR_APP_ID)
 
   const handleUpdateNow = () => {
-    Linking.openURL(playStoreLink)
+    const url = Platform.OS === 'android' ? playStoreLink : appStoreLink; // Select the appropriate store URL
+    Linking.openURL(url)
       .catch(err => console.error("Failed to open URL: ", err));
   };
 
   useEffect(() => {
     const backAction = () => {
-      navigation.navigate('App Info'); // Navigate to HomeScreen
+      navigation.navigate('App Info'); // Navigate to App Info screen
       return true; // Prevent default back button behavior
     };
-    
+
     const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
-    
+
     return () => backHandler.remove(); // Cleanup on unmount
   }, [navigation]);
 
@@ -46,7 +45,7 @@ const UpdateScreen = ({ navigation }) => {
 
             <TouchableOpacity
               style={styles.button}
-              onPress={handleUpdateNow} // Calls the function to open the Play Store
+              onPress={handleUpdateNow} // Calls the function to open the correct store
             >
               <Text style={styles.buttonText}>Update Now</Text>
             </TouchableOpacity>
